@@ -10,9 +10,10 @@ doc : https://frida.re/docs/examples/macos/
 
 ### 0x1: 获取进程 ID
 
+```shell
 frida-ps | grep main  
-
 11986  main
+```
 
 ### 0x2: 找到要 hook 的函数 printOneOneZero
 
@@ -26,7 +27,8 @@ frida-trace -i printOneOneZero -p 11986
 # -d, --decorate       将模块名称添加到生成的onEnter
 frida-trace --decorate -i "*rintOne*" main
 
-# 获取所有 class frida -l enumerate_classes.js main 
+# 遍历所有 module : python3 enumerate_modules.py 
+# 遍历所有 class : frida-trace -p 11986 -S ./enumerate_classes.js 
 # Trace ObjC method calls 
 frida-trace -m "-[NSView drawRect:]" Safari
 frida-trace -m "-[NSObject leng*]" main
