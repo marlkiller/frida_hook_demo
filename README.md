@@ -36,6 +36,16 @@ frida-trace -m "-[NSObject leng*]" main
 # Hook 某个动态库
 frida-trace -I "libcommonCrypto*" main
 
+## https://www.exchen.net/frida-ios-interceptor.html
+# Hook get或post的接口地址
+frida-trace  -m "+[NSURL URLWithString:]" devutils   
+# Hook request body
+frida-trace -U -m "-[NSURLRequest setHTTPBody:]" -m "-[NSMutableURLRequest setHTTPBody:]" devutils
+# 打印对象信息 https://www.yuucn.com/a/1512152.html , https://blog.csdn.net/tslx1020/article/details/128250777
+
+# sub_xxxx 函数参考 https://www.exchen.net/frida-interceptor-sub_xxxx.html
+
+
 ```
 
 ### 0x3: 编写hook 脚本
